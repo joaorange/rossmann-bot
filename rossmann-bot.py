@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import json
 import requests
@@ -31,8 +32,8 @@ def send_message(chat_id,text):
 
 def load_datset(store_id):
     # loading test dataset
-    df10 = pd.read_csv('C:/Users/victo/Desktop/Comunidade DS/DS em produção/data/test.csv')
-    df_store_raw = pd.read_csv('C:/Users/victo/Desktop/Comunidade DS/DS em produção/data/store.csv')
+    df10 = pd.read_csv('test.csv')
+    df_store_raw = pd.read_csv('store.csv')
 
     # merge test dataset + store
     
@@ -124,6 +125,7 @@ def index():
         return '<h1> Rossmann Telegram BOT </h1>'
 
 if __name__ == '__main__':
-    app.run( host = '0.0.0.0', port = 5000)
+    port = os.environ.get('PORT', 5000)
+    app.run( host = '0.0.0.0', port = port)
 
     
