@@ -43,7 +43,7 @@ def load_dataset(store_id):
     return data
 
 def predict(data):
-    # Chamada da API
+    # API call
     url = 'https://rossmann-model-api-cjqo.onrender.com/rossmann/predict'
     header = {'Content-type': 'application/json'}
     data = data
@@ -68,7 +68,7 @@ def parse_message(message):
 
     return chat_id, store_id
 
-# Iniciando API
+# API initialize
 app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
