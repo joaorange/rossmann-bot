@@ -78,7 +78,7 @@ def index():
 
         chat_id, store_id = parse_message(message)
 
-        if store_id != 'error' or 'start':
+        if store_id != 'error':
             
             # loading data
             data = load_dataset(store_id)
@@ -102,9 +102,6 @@ def index():
             else:
                 send_message(chat_id, 'Store not available, please try another Store ID.')
                 return Response('Ok', status=200)   
-        elif store_id == 'start':
-            send_message(chat_id, 'Welcome to Rossmann Sales Prediction Bot. Please, enter a Store ID available to predict the next 6 months of sales.')
-            return Response('Ok', status=200)
    
         else:
             send_message(chat_id, 'Store ID is wrong, please enter a Store ID valid.')
