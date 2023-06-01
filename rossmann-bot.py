@@ -58,9 +58,9 @@ def predict(data):
 def parse_message(message):
     chat_id = message['message']['chat']['id']
     store_id = message['message']['text']
-    msg = message['message']['text']
-    msg = msg.replace('/','')
+    text = message['message']['text']
     store_id = store_id.replace('/','')
+    text = text.replace('/','')
     
   
     try:
@@ -68,7 +68,7 @@ def parse_message(message):
     except ValueError:
          store_id = 'error'
         
-    return chat_id, store_id, msg
+    return chat_id, store_id, text
 
 # API initialize
 app = Flask(__name__)
@@ -78,7 +78,7 @@ def index():
     if request.method == 'POST':
         message = request.get_json()
 
-        chat_id, store_id = parse_message(message)
+        chat_id, store_id, text = parse_message(message)
 
         if store_id != 'error':
             
@@ -106,7 +106,7 @@ def index():
                 return Response('Ok', status=200)   
    
         else:
-            if msg == 'start':
+            if text == 'start':
                 send_message(chat_id, 'Welcome to Rossmann Sales Prediction Bot. Please, enter a Store ID available to predict the next 6 months of sales.')
                 return Response('Ok', status=200)
             else:    
