@@ -107,7 +107,7 @@ def index():
    
         else:
             if text == 'start':
-                send_message(chat_id, 'Welcome to Rossmann Sales Prediction Bot. Please, enter a Store ID available to predict the next 6 months of sales.')
+                send_message(chat_id, 'Welcome to Rossmann Sales Prediction Bot. Please, enter a Store ID available to predict the next 6 weeks of sales.')
                 return Response('Ok', status=200)
             else:    
                 send_message(chat_id, 'Store ID is wrong, please enter a valid Store ID.')
