@@ -60,13 +60,11 @@ def parse_message(message):
     store_id = message['message']['text']
     store_id = store_id.replace('/','')
     
-    if store_id == 'start':
-        store_id = "start"
-    else:    
-        try:
-            store_id = int(store_id)
-        except ValueError:
-            store_id = 'error'
+  
+    try:
+        store_id = int(store_id)
+    except ValueError:
+         store_id = 'error'
         
     return chat_id, store_id
 
