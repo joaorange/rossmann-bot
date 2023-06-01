@@ -6,7 +6,7 @@ import os
 from flask import Flask, request, Response
 
 # constants
-TOKEN = '6220716680:AAGcJihQHnKo5WueyioRBVcdV3aKuHnerVw'
+TOKEN = '6268051513:AAFQQGLcTvzfCvoxmfPpImZ5a6qAHoPxX7k'
 
 def send_message(chat_id, text):
 
