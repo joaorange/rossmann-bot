@@ -58,6 +58,8 @@ def predict(data):
 def parse_message(message):
     chat_id = message['message']['chat']['id']
     store_id = message['message']['text']
+    msg = message['message']['text']
+    msg = msg.replace('/','')
     store_id = store_id.replace('/','')
     
   
@@ -104,7 +106,11 @@ def index():
                 return Response('Ok', status=200)   
    
         else:
-            send_message(chat_id, 'Store ID is wrong, please enter a Store ID valid.')
+            if msg == 'start':
+                send_message(chat_id, 'Welcome to Rossmann Sales Prediction Bot. Please, enter a Store ID available to predict the next 6 months of sales.')
+                return Response('Ok', status=200)
+            else:    
+            send_message(chat_id, 'Store ID is wrong, please enter a valid Store ID.')
             return Response('Ok', status=200)
 
     else:
